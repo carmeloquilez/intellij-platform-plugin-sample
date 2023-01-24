@@ -20,7 +20,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import java.awt.event.KeyEvent.*
-import java.nio.file.Paths
 import java.time.Duration.ofMinutes
 import java.time.Duration.ofSeconds
 
@@ -53,14 +52,15 @@ class ViewAccessibleFieldsActionTest : BasePlatformTestCase() {
 
     @Test
 //    @Video
-    fun openProject(remoteRobot: RemoteRobot) = with(remoteRobot) {
+    fun viewAccessibleFieldsActionsTest(remoteRobot: RemoteRobot) = with(remoteRobot) {
         welcomeFrame {
             SharedSteps.openProject(this, "java-maven")
         }
         idea {
             waitFor(ofMinutes(5)) { isDumbMode().not() }
             closeTipOfTheDay(remoteRobot)
-            step("Create App file") {
+            SharedSteps.openProjectView(this)
+            step("Open MainClass file") {
                 with(projectViewTree) {
                     if (hasText("MainClass")) {
                         findText("MainClass").doubleClick()

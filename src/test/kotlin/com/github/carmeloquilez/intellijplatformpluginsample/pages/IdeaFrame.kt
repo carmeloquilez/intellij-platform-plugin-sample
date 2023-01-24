@@ -18,6 +18,9 @@ fun RemoteRobot.idea(function: IdeaFrame.() -> Unit) {
 @DefaultXpath("IdeFrameImpl type", "//div[@class='IdeFrameImpl']")
 class IdeaFrame(remoteRobot: RemoteRobot, remoteComponent: RemoteComponent) : CommonContainerFixture(remoteRobot, remoteComponent) {
 
+    val projectViewLinks
+        get() = actionLinks(byXpath("Project View", "//div[contains(@text.key, 'toolwindow.stripe.Project')]"))
+
     val projectViewTree
         get() = find<ContainerFixture>(byXpath("ProjectViewTree", "//div[@class='ProjectViewTree']"))
 
