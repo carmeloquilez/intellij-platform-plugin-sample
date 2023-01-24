@@ -1,10 +1,11 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.carmeloquilez.intellijplatformpluginsample</id>
-    <name>IntelliJ Platform Plugin intellij-platform-plugin-sample</name>
+    <name>Sample</name>
     <vendor>carmeloquilez</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.carmeloquilez.intellijplatformpluginsample.services.MyApplicationService"/>
@@ -15,4 +16,17 @@
         <listener class="com.github.carmeloquilez.intellijplatformpluginsample.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+    <actions>
+        <action
+                id="org.intellij.sdk.action.test.helper.view.accesible.fields"
+                class="com.github.carmeloquilez.intellijplatformpluginsample.actions.ViewAccessibleFieldsAction"
+                text="View Accessible Fields"
+                description="View accessible fields"
+                icon="AllIcons.Actions.Share">
+            <override-text place="EditorPopup" text="View Accessible Fields"/>
+
+            <add-to-group group-id="EditorPopupMenu1.FindRefactor" anchor="last"/>
+        </action>
+    </actions>
 </idea-plugin>

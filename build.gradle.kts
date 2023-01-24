@@ -9,7 +9,7 @@ plugins {
     // Kotlin support
     id("org.jetbrains.kotlin.jvm") version "1.7.21"
     // Gradle IntelliJ Plugin
-    id("org.jetbrains.intellij") version "1.10.0"
+    id("org.jetbrains.intellij") version "1.12.0"
     // Gradle Changelog Plugin
     id("org.jetbrains.changelog") version "2.0.0"
     // Gradle Qodana Plugin
@@ -24,6 +24,7 @@ version = properties("pluginVersion")
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    maven("https://packages.jetbrains.team/maven/p/ij/intellij-dependencies")
 }
 
 // Set the JVM language level used to build project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.
@@ -31,10 +32,28 @@ kotlin {
     jvmToolchain(11)
 }
 
+val remoteRobotVersion = "0.11.16"
+
+dependencies {
+    testImplementation("com.intellij.remoterobot:remote-robot:$remoteRobotVersion")
+    testImplementation("com.intellij.remoterobot:remote-fixtures:$remoteRobotVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
+
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.9.2")
+
+    // Logging Network Calls
+    testImplementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+}
+
 // Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
     pluginName.set(properties("pluginName"))
-    version.set(properties("platformVersion"))
+    if (!project.hasProperty("intellij.version")) {
+        version.set(properties("platformVersion"))
+    } else {
+        version.set(project.property("intellij.version") as String)
+    }
     type.set(properties("platformType"))
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
@@ -60,7 +79,27 @@ kover.xmlReport {
     onCheck.set(true)
 }
 
+var customName = "John"
+//fun printProp() {
+//    println("Pro: $customProp")
+//}
+
+
+tasks.register("hello") {
+    doLast {
+//        println("Hello: $customName")
+        if (project.hasProperty("args")) {
+            println ("Our input argument with project property [${project.property("args")}]")
+        }
+        println ("Our input argument with system property [${System.getProperty("args")}]")
+    }
+}
+
 tasks {
+    test {
+        useJUnitPlatform()
+    }
+
     wrapper {
         gradleVersion = properties("gradleVersion")
     }
@@ -101,6 +140,7 @@ tasks {
         systemProperty("ide.mac.message.dialogs.as.sheets", "false")
         systemProperty("jb.privacy.policy.text", "<!--999.999-->")
         systemProperty("jb.consents.confirmation.enabled", "false")
+        systemProperty("idea.trust.all.projects", "true")
     }
 
     signPlugin {
