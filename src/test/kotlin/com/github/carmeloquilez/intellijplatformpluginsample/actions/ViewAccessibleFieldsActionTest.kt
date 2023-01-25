@@ -2,6 +2,7 @@
 
 package com.github.carmeloquilez.intellijplatformpluginsample.actions
 
+import com.automation.remarks.junit5.Video
 import com.github.carmeloquilez.intellijplatformpluginsample.pages.*
 import com.github.carmeloquilez.intellijplatformpluginsample.steps.SharedSteps
 import com.intellij.remoterobot.RemoteRobot
@@ -51,7 +52,7 @@ class ViewAccessibleFieldsActionTest : BasePlatformTestCase() {
     }
 
     @Test
-//    @Video
+    @Video
     fun viewAccessibleFieldsActionsTest(remoteRobot: RemoteRobot) = with(remoteRobot) {
         welcomeFrame {
             SharedSteps.openProject(this, "java-maven")
