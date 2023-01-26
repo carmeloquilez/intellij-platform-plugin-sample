@@ -7,7 +7,7 @@
 #
 # Workflow is triggered manually.
 
-name: Run UI Tests
+name: Run UI Tests - Linux
 on:
   push:
       branches:
