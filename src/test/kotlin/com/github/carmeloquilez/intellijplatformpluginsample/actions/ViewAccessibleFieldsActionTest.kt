@@ -36,20 +36,20 @@ class ViewAccessibleFieldsActionTest : BasePlatformTestCase() {
         waitForIgnoringError(ofMinutes(3)) { remoteRobot.callJs("true") }
     }
 
-//    @AfterEach
-//    fun closeProject(remoteRobot: RemoteRobot) = with(remoteRobot) {
-//        idea {
-//            if (remoteRobot.isMac()) {
-//                keyboard {
-//                    hotKey(VK_SHIFT, VK_META, VK_A)
-//                    enterText("Close Project")
-//                    enter()
-//                }
-//            } else {
-//                menuBar.select("File", "Close Project")
-//            }
-//        }
-//    }
+    @AfterEach
+    fun closeProject(remoteRobot: RemoteRobot) = with(remoteRobot) {
+        idea {
+            if (remoteRobot.isMac()) {
+                keyboard {
+                    hotKey(VK_SHIFT, VK_META, VK_A)
+                    enterText("Close Project")
+                    enter()
+                }
+            } else {
+                menuBar.select("File", "Close Project")
+            }
+        }
+    }
 
     @Test
     @Video

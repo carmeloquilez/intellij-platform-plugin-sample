@@ -14,11 +14,9 @@ object SharedSteps {
     fun openProject(welcomeFrame: WelcomeFrame, projectName: String) = with(welcomeFrame) {
         step("Open project") {
             openProjectButton.doubleClick()
-//            if (remoteRobot.isMac()) {
-//                keyboard {
-//                    enter()
-//                }
-//            }
+            if (remoteRobot.isMac()) {
+                Thread.sleep(5000)
+            }
 //            Thread.sleep(5000)
             dialog("Open File or Project") {
                 val currentPath = Paths.get("").toAbsolutePath().toString()
