@@ -15,13 +15,17 @@ object SharedSteps {
             openProjectButton.click()
             dialog("Open File or Project") {
                 val currentPath = Paths.get("").toAbsolutePath().toString()
-                waitFor(Duration.ofSeconds(5)) { false }
+                Thread.sleep(5000)
+//                waitFor(Duration.ofSeconds(5)) { false }
                 pathTextField.text = "$currentPath"
-                waitFor(Duration.ofSeconds(5)) { false }
+                Thread.sleep(5000)
+//                waitFor(Duration.ofSeconds(5)) { false }
                 pathTextField.text = "$currentPath/src/test/testData/$projectName"
-                waitFor(Duration.ofSeconds(5)) { false }
+                Thread.sleep(5000)
+//                waitFor(Duration.ofSeconds(5)) { false }
                 pathTextField.text = "$currentPath/src/test/testData/$projectName"
-                waitFor(Duration.ofSeconds(5)) { false }
+//                waitFor(Duration.ofSeconds(5)) { false }
+                Thread.sleep(5000)
                 pathTextField.text = "$currentPath/src/test/testData/$projectName"
                 waitFor(Duration.ofSeconds(10)) { button("OK").isEnabled() }
                 button("OK").click()
