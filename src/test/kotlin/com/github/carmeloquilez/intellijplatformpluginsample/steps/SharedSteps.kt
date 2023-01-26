@@ -13,6 +13,7 @@ object SharedSteps {
     fun openProject(welcomeFrame: WelcomeFrame, projectName: String) = with(welcomeFrame) {
         step("Open project") {
             openProjectButton.click()
+            Thread.sleep(3000)
             dialog("Open File or Project") {
 //                val currentPath = Paths.get("").toAbsolutePath().toString()
 //                pathTextField.text = "$currentPath"
