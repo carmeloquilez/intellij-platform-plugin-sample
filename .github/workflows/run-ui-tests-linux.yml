@@ -8,7 +8,10 @@
 # Workflow is triggered manually.
 
 name: Run UI Tests
-on: workflow_dispatch
+on:
+  push:
+      branches:
+        - 'feature/**'
 
 jobs:
   run-ui-test:
@@ -29,16 +32,6 @@ jobs:
               ./gradlew test
             url: http://127.0.0.1:8082
             reportName: ui-test-fails-report-linux
-          - os: macOS-latest
-            runIde: ./gradlew runIdeForUiTests &
-            runTests: ./gradlew test
-            url: http://127.0.0.1:8082
-            reportName: ui-test-fails-report-mac
-          - os: windows-latest
-            runIde: start gradlew.bat runIdeForUiTests
-            runTests: ./gradlew test
-            url: http://localhost:8082
-            reportName: ui-test-fails-report-windows
 
     runs-on: ${{ matrix.os }}
     steps:
