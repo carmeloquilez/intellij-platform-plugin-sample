@@ -22,8 +22,8 @@ object SharedSteps {
 //                pathTextField.text = "$currentPath/src/test"
 //                waitFor(Duration.ofSeconds(5)) { false }
 //                pathTextField.text = "$currentPath/src/test/testData/$projectName"
-                waitFor(Duration.ofSeconds(10)) { button("OK").isEnabled() }
-                button("OK").click()
+                waitFor(Duration.ofSeconds(10)) { button("OKK").isEnabled() }
+                button("OKK").click()
             }
         }
     }
