@@ -21,8 +21,9 @@ object SharedSteps {
             }
             Thread.sleep(3000)
             dialog("Open File or Project") {
-//                val currentPath = Paths.get("").toAbsolutePath().toString()
-//                pathTextField.text = "$currentPath"
+                val currentPath = Paths.get("").toAbsolutePath().toString()
+                pathTextField.text = "$currentPath"
+                Thread.sleep(3000)
 //                waitFor(Duration.ofSeconds(5)) { false }
 //                pathTextField.text = "$currentPath/src"
 //                waitFor(Duration.ofSeconds(5)) { false }
