@@ -13,26 +13,26 @@ import java.time.Duration
 object SharedSteps {
     fun openProject(welcomeFrame: WelcomeFrame, projectName: String) = with(welcomeFrame) {
         step("Open project") {
-            openProjectButton.click()
-            if (remoteRobot.isMac()) {
-                keyboard {
-                    enter()
-                }
-            }
-            Thread.sleep(3000)
-            dialog("Open File or Project") {
-                val currentPath = Paths.get("").toAbsolutePath().toString()
-                pathTextField.text = "$currentPath"
-                Thread.sleep(3000)
-//                waitFor(Duration.ofSeconds(5)) { false }
-//                pathTextField.text = "$currentPath/src"
-//                waitFor(Duration.ofSeconds(5)) { false }
-//                pathTextField.text = "$currentPath/src/test"
-//                waitFor(Duration.ofSeconds(5)) { false }
-//                pathTextField.text = "$currentPath/src/test/testData/$projectName"
-                waitFor(Duration.ofSeconds(10)) { button("OK").isEnabled() }
-                button("OK").click()
-            }
+            openProjectButton.doubleClick()
+//            if (remoteRobot.isMac()) {
+//                keyboard {
+//                    enter()
+//                }
+//            }
+            Thread.sleep(10000)
+//            dialog("Open File or Project") {
+//                val currentPath = Paths.get("").toAbsolutePath().toString()
+//                pathTextField.text = "$currentPath"
+//                Thread.sleep(3000)
+////                waitFor(Duration.ofSeconds(5)) { false }
+////                pathTextField.text = "$currentPath/src"
+////                waitFor(Duration.ofSeconds(5)) { false }
+////                pathTextField.text = "$currentPath/src/test"
+////                waitFor(Duration.ofSeconds(5)) { false }
+////                pathTextField.text = "$currentPath/src/test/testData/$projectName"
+//                waitFor(Duration.ofSeconds(10)) { button("OK").isEnabled() }
+//                button("OK").click()
+//            }
         }
     }
 
