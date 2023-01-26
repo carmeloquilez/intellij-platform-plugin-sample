@@ -17,9 +17,9 @@ object SharedSteps {
                 val currentPath = Paths.get("").toAbsolutePath().toString()
 //                pathTextField.text = "$currentPath"
 //                waitFor(Duration.ofSeconds(5)) { false }
-                pathTextField.text = "$currentPath/src"
+//                pathTextField.text = "$currentPath/src"
 //                waitFor(Duration.ofSeconds(5)) { false }
-//                pathTextField.text = "$currentPath/src/test/testData/$projectName"
+                pathTextField.text = "$currentPath/src/test"
 //                waitFor(Duration.ofSeconds(5)) { false }
 //                pathTextField.text = "$currentPath/src/test/testData/$projectName"
                 waitFor(Duration.ofSeconds(10)) { button("OK").isEnabled() }
