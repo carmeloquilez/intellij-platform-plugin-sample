@@ -5,6 +5,7 @@ import com.github.carmeloquilez.intellijplatformpluginsample.pages.WelcomeFrame
 import com.github.carmeloquilez.intellijplatformpluginsample.pages.dialog
 import com.intellij.openapi.actionSystem.ex.ActionUtil.isDumbMode
 import com.intellij.remoterobot.stepsProcessing.step
+import com.intellij.remoterobot.utils.keyboard
 import com.intellij.remoterobot.utils.waitFor
 import java.nio.file.Paths
 import java.time.Duration
@@ -13,6 +14,11 @@ object SharedSteps {
     fun openProject(welcomeFrame: WelcomeFrame, projectName: String) = with(welcomeFrame) {
         step("Open project") {
             openProjectButton.click()
+            if (remoteRobot.isMac()) {
+                keyboard {
+                    enter()
+                }
+            }
             Thread.sleep(3000)
 //            dialog("Open File or Project") {
 //                val currentPath = Paths.get("").toAbsolutePath().toString()
