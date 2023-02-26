@@ -141,6 +141,7 @@ tasks {
     runIdeForUiTests {
         systemProperty("robot-server.port", "8082")
         systemProperty("ide.mac.message.dialogs.as.sheets", "false")
+        systemProperty("ide.mac.file.chooser.native=false", "false")
         systemProperty("jb.privacy.policy.text", "<!--999.999-->")
         systemProperty("jb.consents.confirmation.enabled", "false")
         systemProperty("idea.trust.all.projects", "true")
