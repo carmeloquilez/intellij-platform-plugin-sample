@@ -57,9 +57,9 @@ class ViewAccessibleFieldsActionTest : BasePlatformTestCase() {
         welcomeFrame {
             SharedSteps.openProject(this, "java-maven")
         }
-//        idea {
-//            waitFor(ofMinutes(5)) { isDumbMode().not() }
-//            closeTipOfTheDay(remoteRobot)
+        idea {
+            waitFor(ofMinutes(5)) { isDumbMode().not() }
+            closeTipOfTheDay(remoteRobot)
 //            SharedSteps.openProjectView(this)
 //            step("Open MainClass file") {
 //                with(projectViewTree) {
@@ -98,7 +98,7 @@ class ViewAccessibleFieldsActionTest : BasePlatformTestCase() {
 //                    acceptDialog(remoteRobot)
 //                }
 //            }
-//        }
+        }
     }
 
     private fun closeTipOfTheDay(remoteRobot: RemoteRobot) {

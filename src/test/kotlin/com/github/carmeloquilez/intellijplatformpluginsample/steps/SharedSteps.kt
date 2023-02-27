@@ -14,10 +14,6 @@ object SharedSteps {
     fun openProject(welcomeFrame: WelcomeFrame, projectName: String) = with(welcomeFrame) {
         step("Open project") {
             openProjectButton.doubleClick()
-            //if (remoteRobot.isMac()) {
-            //    Thread.sleep(5000)
-            //}
-//            Thread.sleep(5000)
             dialog("Open File or Project") {
                 val currentPath = Paths.get("").toAbsolutePath().toString()
                 pathTextField.text = "$currentPath"
@@ -27,10 +23,10 @@ object SharedSteps {
 ////                waitFor(Duration.ofSeconds(5)) { false }
 ////                pathTextField.text = "$currentPath/src/test"
 ////                waitFor(Duration.ofSeconds(5)) { false }
-////                pathTextField.text = "$currentPath/src/test/testData/$projectName"
-                val buttonName = "OK"
-                waitFor(Duration.ofSeconds(10)) { button(buttonName).isEnabled() }
-                button(buttonName).click()
+                pathTextField.text = "$currentPath/src/test/testData/$projectName"
+                Thread.sleep(3000)
+                waitFor(Duration.ofSeconds(10)) { button("OK").isEnabled() }
+                button("OK").click()
             }
         }
     }
