@@ -60,44 +60,44 @@ class ViewAccessibleFieldsActionTest : BasePlatformTestCase() {
         idea {
             waitFor(ofMinutes(5)) { isDumbMode().not() }
             closeTipOfTheDay(remoteRobot)
-//            SharedSteps.openProjectView(this)
-//            step("Open MainClass file") {
-//                with(projectViewTree) {
-//                    if (hasText("MainClass")) {
-//                        findText("MainClass").doubleClick()
-//                    } else {
-//                        if (hasText("src").not()) {
-//                            findText(projectName).doubleClick()
-//                            waitFor { hasText("src") }
-//                        }
-//                        if (hasText("main").not()) {
-//                            findText("src").doubleClick()
-//                            waitFor { hasText("main") }
-//                        }
-//                        if (hasText("java").not()) {
-//                            findText("main").doubleClick()
-//                            waitFor { hasText("java") }
-//                        }
-//                        if (hasText("org.example").not()) {
-//                            findText("java").doubleClick()
-//                            waitFor { hasText("org.example") }
-//                        }
-//                        if (hasText("MainClass").not()) {
-//                            findText("org.example").doubleClick()
-//                            waitFor { hasText("java") }
-//                        }
-//                    }
-//                }
-//            }
-//            findText("MainClass").doubleClick()
-//            with(textEditor()) {
-//                step("Write a code") {
-//                    Thread.sleep(1_000)
-//                    editor.findText("sampleMethod").click(MouseButton.RIGHT_BUTTON)
-//                    actionMenuItem("View Accessible Fields").click()
-//                    acceptDialog(remoteRobot)
-//                }
-//            }
+            SharedSteps.openProjectView(this)
+            step("Open MainClass file") {
+                with(projectViewTree) {
+                    if (hasText("MainClass")) {
+                        findText("MainClass").doubleClick()
+                    } else {
+                        if (hasText("src").not()) {
+                            findText(projectName).doubleClick()
+                            waitFor { hasText("src") }
+                        }
+                        if (hasText("main").not()) {
+                            findText("src").doubleClick()
+                            waitFor { hasText("main") }
+                        }
+                        if (hasText("java").not()) {
+                            findText("main").doubleClick()
+                            waitFor { hasText("java") }
+                        }
+                        if (hasText("org.example").not()) {
+                            findText("java").doubleClick()
+                            waitFor { hasText("org.example") }
+                        }
+                        if (hasText("MainClass").not()) {
+                            findText("org.example").doubleClick()
+                            waitFor { hasText("java") }
+                        }
+                    }
+                }
+            }
+            findText("MainClass").doubleClick()
+            with(textEditor()) {
+                step("Write a code") {
+                    Thread.sleep(1_000)
+                    editor.findText("sampleMethod").click(MouseButton.RIGHT_BUTTON)
+                    actionMenuItem("View Accessible Fields").click()
+                    acceptDialog(remoteRobot)
+                }
+            }
         }
     }
 
